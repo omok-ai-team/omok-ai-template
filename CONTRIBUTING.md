@@ -11,8 +11,9 @@
 
 1. 최신 코드 가져오기
 ```
-git checkout develop
-git pull origin develop
+# 최신 코드 가져오기
+git checkout main
+git pull origin main
 ```
 
 2. 기능 브랜치 생성
@@ -44,7 +45,6 @@ git push origin 브랜치이름
 ## 3. 브랜치 구조
 
 - main → 배포 버전
-- develop → 통합 개발
 - feature/* → 개인 작업
 
 ---
