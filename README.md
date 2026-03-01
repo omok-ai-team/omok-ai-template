@@ -2,7 +2,7 @@
 
 ## 1. 설치
 
-git clone <repo>
+git clone https://github.com/baesunghu/omok-ai-team.git
 cd omok-ai-team
 
 setup.bat 실행
