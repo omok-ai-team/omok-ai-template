@@ -1,21 +1,19 @@
-name: Auto Release
+name: Publish Release
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "*"
 
 jobs:
-  release:
+  publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      discussions: write
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
+      - uses: actions/checkout@v3
+      - uses: ghalactic/github-release-from-tag@v6
         with:
-          tag_name: v${{ github.run_number }}
-          name: Release v${{ github.run_number }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
