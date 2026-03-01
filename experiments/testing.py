@@ -60,8 +60,8 @@ def play_game():
             if winner:
                 break
             game.switch_player()
-        except Exception as e:
-            print("Invalid input! Please enter numbers 0-2.")
+        except Exception:
+            print("Invalid input! Please enter numbers 0-2. ")
     
     game.print_board()
     if winner:
