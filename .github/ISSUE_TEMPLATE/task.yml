@@ -1,0 +1,15 @@
+name: Task
+description: Development task
+title: "[TASK] "
+body:
+  - type: textarea
+    attributes:
+      label: What to do
+      description: 작업 내용 설명
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Expected result
+      description: 완료 기준

@@ -1,26 +1,33 @@
-name: CI Check
+name: Python CI
 
 on:
+  push:
+    branches: [ main, feature-* ]    # main과 모든 feature 브랜치에 적용
   pull_request:
-    branches:
-      - develop
-      - main
+    branches: [ main ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 코드 가져오기
-        uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-      - name: Python 설치
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'  # 원하는 파이썬 버전
 
-      - name: Python 확인
-        run: python --version
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-      - name: 기본 테스트
-        run: echo "CI SUCCESS"
+    - name: Lint with ruff
+      run: ruff check .
+
+    - name: Check code style with black
+      run: black --check .
+
+    - name: Run tests with pytest
+      run: pytest
